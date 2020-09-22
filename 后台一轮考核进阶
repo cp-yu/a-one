@@ -1,0 +1,17 @@
+import requests
+import re
+import time
+
+def getpicname():
+    rd = requests.get('https://cn.bing.com/#')
+    rdname = re.findall('id="sh_cp" class="sc_light" title=".*?" ',rd.text)
+    rdnameget = rdname[0].split('"')[-2].split(' ')[0]
+    return rdnameget
+
+w,h = input('输入你需要的图片长宽（比如1920*1080）').split('*')
+web = requests.get('https://cn.bing.com/ImageResolution.aspx?w={}&h={}'.format(w,h))
+picname = getpicname()
+with open('{}{}.jpg'.format(picname,time.strftime('%m-%d',time.localtime())),'wb') as f:
+    f.write(web.content)
+print('图片在本文件所在文件夹中')
+time.sleep(2000)
