@@ -1,17 +1,17 @@
 from time import sleep
-def codep(mget):
+def codep(mget,n=3):
     mgpc = ''
     for i in mget:
          ipc = ord(i)
-         i = chr(ipc+3)
+         i = chr(ipc+n)
          mgpc += i
     print('加密后为：'+mgpc)
 
-def codeb(mget):
+def codeb(mget,n=3):
     mgbr = ''
     for i in mget:
         ibr = ord(i)
-        i = chr(ibr-3)
+        i = chr(ibr-n)
         mgbr += i
     print('解密后为：'+mgbr)
 
@@ -19,10 +19,22 @@ while True:
     a = input('选择你想要的服务：1、加密信息；2、解密信息(输入1或者2)')
     if a == '1':
         mget = input('请输入你要加密的信息：')
-        codep(mget)
+        n  = input('若偏移量不想为默认值（3），请输入你要的偏移量(不需要可以直接回车)：')
+        if n == '':
+            n =3
+        else:
+            n = eval(n)
+        codep(mget,n)
     elif a == '2':
         mget = input('请输入你要解密的信息：')
-        codeb(mget)
+        n  = input('若偏移量不想为默认值（3），请输入你要的偏移量(不需要可以直接回车)：')
+        if n == '':
+            n =3
+        else:
+            n = eval(n)
+        codeb(mget,n)
+    elif a[0] == ' ':
+        print('请输入1或2：')
     else:
         print('你输入了其他信息，本程序将退出')
         sleep(2000)
