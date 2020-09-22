@@ -1,0 +1,28 @@
+from time import sleep
+def codep(mget):
+    mgpc = ''
+    for i in mget:
+         ipc = ord(i)
+         i = chr(ipc+3)
+         mgpc += i
+    print('加密后为：'+mgpc)
+
+def codeb(mget):
+    mgbr = ''
+    for i in mget:
+        ibr = ord(i)
+        i = chr(ibr-3)
+        mgbr += i
+    print('解密后为：'+mgbr)
+
+while True:
+    a = input('选择你想要的服务：1、加密信息；2、解密信息(输入1或者2)')
+    if a == '1':
+        mget = input('请输入你要加密的信息：')
+        codep(mget)
+    elif a == '2':
+        mget = input('请输入你要解密的信息：')
+        codeb(mget)
+    else:
+        print('你输入了其他信息，本程序将退出')
+        sleep(2000)
